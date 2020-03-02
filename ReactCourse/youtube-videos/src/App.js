@@ -3,9 +3,16 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar';
 
 export default class App extends Component {
+    state = {} 
+
+    onComponentDidMount() {
+
+    }
+
+    
     render() {
         return (
-            <div>
+            <div className='ui container'>
                 <SearchBar />
             </div>
         )
