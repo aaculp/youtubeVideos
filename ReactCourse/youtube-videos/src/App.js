@@ -8,6 +8,10 @@ import VideoDetail from './components/VideoDetail'
 export default class App extends Component {
     state = { videos: [], selectedVideo: null }
 
+    componentDidMount() {
+        this.onTermSubmit('Top Video');
+    }
+
     onTermSubmit = async term => {
         // console.log(term)
         const response = await youtube.get('/search', {
@@ -16,7 +20,10 @@ export default class App extends Component {
             }
         })
         // console.log(response)
-        this.setState({ videos: response.data.items })
+        this.setState({ 
+            videos: response.data.items,
+            selectedVideo: response.data.items[0]
+        })
         console.log(this.state.videos)
     }
 
