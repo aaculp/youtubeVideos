@@ -6,7 +6,7 @@ import VideoList from './components/VideoList'
 import VideoDetail from './components/VideoDetail'
 
 export default class App extends Component {
-    state = { videos: [], selectedVideo: null}
+    state = { videos: [], selectedVideo: null }
 
     onTermSubmit = async term => {
         // console.log(term)
@@ -28,11 +28,19 @@ export default class App extends Component {
         return (
             <div className='ui container'>
                 <SearchBar onTermSubmit={this.onTermSubmit} />
-                <VideoDetail video={this.state.selectedVideo} />
-                <VideoList
-                    videos={this.state.videos}
-                    onVideoSelect={this.onVideoSelect}
-                />
+                <div className='ui grid'>
+                    <div className='ui row'>
+                        <div className='eleven wide column'>
+                            <VideoDetail video={this.state.selectedVideo} />
+                        </div>
+                        <div className='five wide column'>
+                            <VideoList
+                                videos={this.state.videos}
+                                onVideoSelect={this.onVideoSelect}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
